@@ -1,0 +1,79 @@
+{
+    "name": "custom-snippets",
+    "author": "edr3x",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./lua.json"
+            },
+            {
+                "language": [
+                    "shellscript",
+                    "shell",
+                    "sh"
+                ],
+                "path": "./shell.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./typescript.json"
+            },
+            {
+                "language": "rust",
+                "path": "./rust.json"
+            },
+            {
+                "language": "go",
+                "path": "./go.json"
+            },
+            {
+                "language": "dart",
+                "path": "./flutter/dart.json"
+            },
+            {
+                "language": "dart",
+                "path": "./flutter/bloc.json"
+            },
+            {
+                "language": "c",
+                "path": "./c.json"
+            },
+            {
+                "language": "cpp",
+                "path": "./cpp.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/base.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/comprehension.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/debug.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/python.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/unittest.json"
+            },
+            {
+                "language": "json",
+                "path": "./json.json"
+            },
+            {
+                "language": "java",
+                "path": "./java.json"
+            }
+        ]
+    }
+}

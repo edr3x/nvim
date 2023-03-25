@@ -13,15 +13,21 @@ return {
 
         wk.setup({})
         wk.register({
-            c = { name = "Code Actions", },
+            ["1"] = "which_key_ignore",
+            ["2"] = "which_key_ignore",
+            ["3"] = "which_key_ignore",
+            ["4"] = "which_key_ignore",
+            ["5"] = "which_key_ignore",
+            c = { name = "Code Actions" },
             b = { name = "Buffer" },
             d = { name = "LSP diganostics" },
             f = { name = "Telescope" },
             g = { name = "Git" },
+            l = { name = "LSP" },
             m = { name = "Minimap and md" },
             n = { name = "Tree prefix", t = "tree" },
             s = { name = "Search and replace current highlight" },
-            t = { name = "Trouble" }
+            t = { name = "Trouble" },
         }, { prefix = "<leader>" })
-    end
+    end,
 }

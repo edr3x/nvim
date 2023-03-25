@@ -1,11 +1,17 @@
 return {
     {
-        'nvim-treesitter/nvim-treesitter',
+        "nvim-treesitter/nvim-treesitter",
         event = "BufReadPre",
-        build = function() require('nvim-treesitter.install').update({ with_sync = true }) end or ':TSUpdate',
-        dependencies = { 'windwp/nvim-ts-autotag' },
+        build = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end or ":TSUpdate",
+        dependencies = {
+            "windwp/nvim-ts-autotag",
+            "nvim-treesitter/playground",
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
         config = function()
-            require("nvim-treesitter.configs").setup {
+            require("nvim-treesitter.configs").setup({
                 ensure_installed = {
                     "bash",
                     "c",
@@ -34,7 +40,7 @@ return {
                     "toml",
                     "tsx",
                     "typescript",
-                    "yaml"
+                    "yaml",
                 },
                 autotag = { enable = true },
                 auto_install = false,
@@ -43,37 +49,25 @@ return {
                     extended_mode = true,
                     additional_vim_regex_highlighting = false,
                 },
+                context_commentstring = {
+                    enable = true,
+                    enable_autocmd = false,
+                },
                 incremental_selection = {
                     enable = true,
                     keymaps = {
-                        init_selection = '<c-space>',
-                        node_incremental = '<c-space>',
-                        scope_incremental = '<c-s>',
-                        node_decremental = '<c-backspace>',
+                        init_selection = "<c-space>",
+                        node_incremental = "<c-space>",
+                        scope_incremental = "<c-s>",
+                        node_decremental = "<c-backspace>",
                     },
                 },
-            }
-        end
+            })
+        end,
     },
     {
-        'edr3x/nvim-treesitter-context',
+        "nvim-treesitter/nvim-treesitter-context",
         event = "BufReadPre",
-        opts = {
-            enable = true,
-            max_lines = 0,
-            patterns = {
-                rust = {
-                    'impl_item',
-                    'loop_expression',
-                    'struct',
-                    'enum',
-                },
-                typescript = {
-                    "class_declaration",
-                    "abstract_class_declaration",
-                    "else_clause",
-                },
-            },
-        }
-    }
+        opts = {},
+    },
 }

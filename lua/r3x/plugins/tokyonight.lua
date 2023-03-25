@@ -1,21 +1,24 @@
 return {
     "folke/tokyonight.nvim",
-    commit = "06d0eadc5e8efe6b2516675c75614df36117eaf1",
-    config = function()
-        require("tokyonight").setup({
-            style = "night",
-            transparent = true,
-            terminal_colors = true,
-            styles = {
-                comments = "italic",
-                keywords = "italic",
-                functions = "NONE",
-                variables = "NONE",
-                sidebars = "transparent",
-                floats = "transparent",
-            },
-        })
-
-        vim.cmd [[colorscheme tokyonight]]
-    end
+    priority = 1000,
+    opts = {
+        style = "night",
+        transparent = true,
+        terminal_colors = true,
+        styles = {
+            -- Value is any valid attr-list value for `:help nvim_set_hl`
+            comments = { italic = true },
+            keywords = { italic = false },
+            functions = {},
+            variables = {},
+            sidebars = "transparent",
+            floats = "transparent",
+        },
+        on_highlights = function(hl, c)
+            hl.CursorLineNr = { fg = c.orange, bold = true }
+            hl.LineNr = { fg = c.orange, bold = true }
+            hl.LineNrAbove = { fg = c.fg_gutter }
+            hl.LineNrBelow = { fg = c.fg_gutter }
+        end,
+    },
 }

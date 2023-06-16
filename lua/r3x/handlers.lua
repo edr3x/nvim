@@ -2,10 +2,10 @@ local M = {}
 
 M.setup = function()
     local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignError", text = " " },
+        { name = "DiagnosticSignWarn", text = " " },
+        { name = "DiagnosticSignHint", text = " " },
+        { name = "DiagnosticSignInfo", text = " " },
     }
 
     for _, sign in ipairs(signs) do
@@ -49,6 +49,11 @@ M.setup = function()
         update_in_insert = true,
     })
 
+    vim.keymap.set("n", "dn", vim.diagnostic.goto_next)
+    vim.keymap.set("n", "dN", vim.diagnostic.goto_prev)
+    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+
     vim.api.nvim_create_autocmd("TextYankPost", {
         callback = function()
             vim.highlight.on_yank({
@@ -57,10 +62,6 @@ M.setup = function()
             })
         end,
     })
-
-    -- vim.api.nvim_create_user_command("Fmt", function()
-    --     vim.lsp.buf.format()
-    -- end, {})
 
     -- format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -89,19 +90,6 @@ end
 
 local opts = { noremap = true, silent = true }
 
-local signature_cfg = {
-    bind = true,
-    hint_enable = false,
-    floating_window = true,
-    floating_window_above_cur_line = true,
-    check_completion_visible = true,
-    toggle_key = "<M-t>",
-    select_signature_key = "<M-s>",
-    handler_opts = {
-        border = "rounded",
-    },
-}
-
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 M.on_attach = function(client, bufnr)
@@ -113,23 +101,23 @@ M.on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
     end
 
-    client.server_capabilities.semanticTokensProvider = nil
-
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>de", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>df", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>di", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>h", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "dn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "dN", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "i", "<M-t>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+
+    vim.api.nvim_buf_create_user_command(bufnr, "Fmt", function(_)
+        vim.lsp.buf.format()
+    end, {})
 
     require("illuminate").on_attach(client)
 
-    require("lsp_signature").on_attach(signature_cfg, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        require("nvim-navbuddy").attach(client, bufnr)
+    end
 end
 
 return M

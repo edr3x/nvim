@@ -12,7 +12,7 @@ set.shiftwidth = 4
 set.expandtab = true
 set.hlsearch = false
 set.incsearch = true
-set.scrolloff = 10
+set.scrolloff = 15
 
 set.splitbelow = true
 set.splitright = true
@@ -20,7 +20,7 @@ set.signcolumn = "yes"
 set.showmode = false
 
 set.timeout = true
-set.timeoutlen = 300
+set.timeoutlen = 200
 
 set.smartindent = true
 set.wrap = false

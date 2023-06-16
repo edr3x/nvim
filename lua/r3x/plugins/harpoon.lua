@@ -1,6 +1,6 @@
 return {
     "ThePrimeagen/harpoon",
-    lazy = true,
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         {
             "<leader>a",
@@ -16,7 +16,6 @@ return {
             end,
             desc = "Harpoon open",
         },
-
         {
             "<leader>1",
             function()

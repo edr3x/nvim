@@ -12,21 +12,18 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "ray-x/lsp_signature.nvim",
+            "folke/neodev.nvim",
             "RRethy/vim-illuminate",
         },
         event = "BufReadPre",
         config = function()
+            require("neodev").setup()
             local lspconfig = require("lspconfig")
+            local root_pattern = require("lspconfig.util").root_pattern
             local on_attach = require("r3x.handlers").on_attach
             local capabilities = require("r3x.handlers").capabilities
 
-            local servers = {
-                "prismals",
-                "dockerls",
-                "cssls",
-                -- "tailwindcss",
-            }
+            local servers = { "prismals", "dockerls" }
 
             for _, lsp in pairs(servers) do
                 lspconfig[lsp].setup({
@@ -44,6 +41,11 @@ return {
                         hint = { enable = true },
                     },
                 },
+            })
+
+            lspconfig["pyright"].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
             })
 
             lspconfig["tsserver"].setup({
@@ -97,6 +99,12 @@ return {
                 capabilities = capabilities,
                 settings = {
                     gopls = {
+                        completeUnimported = true,
+                        usePlaceholders = true,
+                        staticcheck = true,
+                        analyses = {
+                            unusedparams = true,
+                        },
                         hints = {
                             assignVariableTypes = true,
                             compositeLiteralFields = true,
@@ -128,9 +136,41 @@ return {
                 capabilities = cap,
             })
 
+            lspconfig["cssls"].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    css = {
+                        validate = true,
+                        lint = {
+                            unknownAtRules = "ignore",
+                        },
+                    },
+                    scss = {
+                        validate = true,
+                        lint = {
+                            unknownAtRules = "ignore",
+                        },
+                    },
+                    less = {
+                        validate = true,
+                        lint = {
+                            unknownAtRules = "ignore",
+                        },
+                    },
+                },
+            })
+
+            lspconfig["tailwindcss"].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                root_dir = root_pattern("tailwind.config.js", "postcss.config.js"),
+            })
+
             require("r3x.handlers").setup()
         end,
     },
+    -- inlay hints
     {
         "lvimuser/lsp-inlayhints.nvim",
         event = "LspAttach",
@@ -165,6 +205,7 @@ return {
             },
         },
     },
+    -- code formatters
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = "LspAttach",

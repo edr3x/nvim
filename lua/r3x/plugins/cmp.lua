@@ -5,6 +5,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "js-everts/cmp-tailwind-colors",
     },
     config = function()
         local luasnip = require("luasnip")
@@ -13,29 +14,29 @@ return {
         local kind_icons = {
             Text = "",
             Method = "m",
-            Function = "",
+            Function = "󰊕",
             Constructor = "",
             Field = "",
             Variable = "",
-            Class = "ﴯ",
+            Class = "",
             Interface = "",
-            Module = "",
-            Property = "",
+            Module = "",
+            Property = " ",
             Unit = "",
-            Value = "",
+            Value = "󰎠",
             Enum = "",
-            Keyword = "",
+            Keyword = "󰌋",
             Snippet = "",
-            Color = "",
-            File = "",
+            Color = "󰏘",
+            File = "󰈙",
             Reference = "",
-            Folder = "",
+            Folder = "󰉋",
             EnumMember = "",
-            Constant = "",
+            Constant = "󰏿",
             Struct = "",
             Event = "",
-            Operator = "",
-            TypeParameter = "",
+            Operator = "󰆕",
+            TypeParameter = " ",
         }
 
         local borderstyle = {
@@ -65,13 +66,24 @@ return {
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 format = function(entry, vim_item)
-                    vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                     vim_item.menu = ({
                         nvim_lsp = "[LSP]",
                         luasnip = "[Snip]",
                         buffer = "[Buff]",
                         path = "[Path]",
                     })[entry.source.name]
+
+                    -- for tailwind colors
+                    if vim_item.kind == "Color" then
+                        vim_item = require("cmp-tailwind-colors").format(entry, vim_item)
+
+                        if vim_item.kind ~= "Color" then
+                            vim_item.menu = "Color"
+                            return vim_item
+                        end
+                    end
+
+                    vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                     return vim_item
                 end,
             },

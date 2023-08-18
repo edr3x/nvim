@@ -1,7 +1,6 @@
 return {
     {
         "tpope/vim-commentary",
-        event = "BufReadPre",
     },
     {
         "tpope/vim-fugitive",

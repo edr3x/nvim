@@ -2,6 +2,7 @@ local set = vim.opt
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+vim.g.markdown_recommended_style = 0
 
 set.nu = true
 set.relativenumber = true
@@ -18,6 +19,8 @@ set.splitbelow = true
 set.splitright = true
 set.signcolumn = "yes"
 set.showmode = false
+set.ignorecase = true
+set.cursorline = true
 
 set.timeout = true
 set.timeoutlen = 200
@@ -32,5 +35,3 @@ set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
 set.undolevels = 10000
-
-vim.g.markdown_recommended_style = 0

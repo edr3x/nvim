@@ -10,20 +10,36 @@ return {
         },
     },
     {
+        "RRethy/vim-illuminate",
+        event = "BufReadPost",
+        config = function()
+            require("illuminate").configure({
+                delay = 200,
+                large_file_cutoff = 2000,
+                large_file_overrides = {
+                    providers = { "lsp" },
+                },
+            })
+        end,
+    },
+    {
+
         "neovim/nvim-lspconfig",
-        dependencies = {
-            "folke/neodev.nvim",
-            "RRethy/vim-illuminate",
-        },
+        dependencies = { "folke/neodev.nvim" },
         event = "BufReadPre",
         config = function()
             require("neodev").setup()
             local lspconfig = require("lspconfig")
-            local root_pattern = require("lspconfig.util").root_pattern
             local on_attach = require("r3x.handlers").on_attach
             local capabilities = require("r3x.handlers").capabilities
 
-            local servers = { "prismals", "dockerls" }
+            local servers = {
+                "prismals",
+                "dockerls",
+                "pyright",
+                -- "tailwindcss",
+                "svelte",
+            }
 
             for _, lsp in pairs(servers) do
                 lspconfig[lsp].setup({
@@ -41,11 +57,6 @@ return {
                         hint = { enable = true },
                     },
                 },
-            })
-
-            lspconfig["pyright"].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
             })
 
             lspconfig["tsserver"].setup({
@@ -101,20 +112,15 @@ return {
                     gopls = {
                         completeUnimported = true,
                         usePlaceholders = true,
+                        gofumpt = true,
                         staticcheck = true,
                         analyses = {
                             unusedparams = true,
                         },
-                        hints = {
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            compositeLiteralTypes = true,
-                            constantValues = true,
-                            functionTypeParameters = true,
-                            parameterNames = true,
-                            rangeVariableTypes = true,
-                        },
                     },
+                },
+                flags = {
+                    debounce_text_changes = 120,
                 },
             })
 
@@ -130,7 +136,6 @@ return {
 
             local cap = capabilities
             cap.offsetEncoding = "utf-8"
-
             lspconfig["clangd"].setup({
                 on_attach = on_attach,
                 capabilities = cap,
@@ -159,12 +164,6 @@ return {
                         },
                     },
                 },
-            })
-
-            lspconfig["tailwindcss"].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                root_dir = root_pattern("tailwind.config.js", "postcss.config.js"),
             })
 
             require("r3x.handlers").setup()

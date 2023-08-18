@@ -57,6 +57,7 @@ return {
                 relativenumber = false,
                 signcolumn = "yes",
                 hide_root_folder = false,
+                side = "right",
                 float = {
                     enable = true,
                     open_win_config = {
@@ -86,12 +87,6 @@ return {
                             ignored = "I",
                         },
                     },
-                },
-                special_files = {
-                    "Cargo.toml",
-                    "Makefile",
-                    "README.md",
-                    "go.mod",
                 },
             },
             filters = {

@@ -8,6 +8,10 @@ map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
 map("n", "G", "Gzzzv", opts)
 
+-- remap for dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- remove mapping
 map({ "n", "x" }, "Q", "<nop>")
 
@@ -36,6 +40,7 @@ map("n", "<leader>ba", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but not cu
 map("n", "x", [["_x]], opts)
 map("x", "p", [["_dP]], opts)
 map("n", "<leader>Y", [["+Y]], opts) -- copy current line to system clipboard
+map("n", "<leader>vp", "`[v`]", opts) -- reselect pasted text
 map({ "n", "x" }, "<leader>y", [["+y]], opts) -- copy to system clipboard
 map({ "n", "x" }, "<leader>p", [["+p]], opts) -- paste from system clipboard
 map("n", "YY", "va{Vy", opts)

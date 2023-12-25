@@ -1,6 +1,8 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+vim.api.nvim_create_user_command("E", "Oil", { desc = "Open Oil instead of NetRW" })
+
 -- center screen
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
@@ -33,7 +35,7 @@ map("x", ">", ">gv", opts)
 -- buffer
 map("n", "<M-h>", "<cmd>bprev<CR>", opts)
 map("n", "<M-l>", "<cmd>bnext<CR>", opts)
-map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close current buffer" })
+-- map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close current buffer" })
 map("n", "<leader>ba", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but not current one" })
 
 -- avoid vim register for some operations

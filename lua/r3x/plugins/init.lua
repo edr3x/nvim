@@ -8,7 +8,7 @@ return {
     },
     {
         "github/copilot.vim",
-        event = "InsertEnter",
+        event = "BufReadPre",
     },
     {
         "andweeb/presence.nvim",
@@ -30,5 +30,10 @@ return {
         keys = {
             { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree" },
         },
+    },
+    {
+        "stevearc/dressing.nvim",
+        event = "BufReadPre",
+        config = true,
     },
 }

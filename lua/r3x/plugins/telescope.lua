@@ -9,15 +9,16 @@ return {
         { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
         { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Find texts" },
         { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help tags" },
+        { "<leader>fr", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
         { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "List Opened Buffers" },
         { "<leader>fd", "<cmd>Telescope diagnostics<CR>", desc = "List buffer diagnostics" },
         { "<leader>fs", "<cmd>Telescope symbols<CR>", desc = "List symbols" },
-        { "<leader>fc", "<cmd>Telescope flutter commands<CR>", desc = "Flutter Commands" },
         { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Git status" },
         { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Git status" },
         { "<leader>gt", "<cmd>Telescope git_branches<CR>", desc = "Git branches" },
     },
     opts = function()
+        local trouble = require("trouble.providers.telescope")
         local delta = require("telescope.previewers").new_termopen_previewer({
             get_command = function(entry)
                 if entry.status == "??" or "A " then
@@ -41,6 +42,10 @@ return {
                 mappings = {
                     n = {
                         ["dd"] = "delete_buffer",
+                        ["<a-t>"] = trouble.open_with_trouble,
+                    },
+                    i = {
+                        ["<a-t>"] = trouble.open_with_trouble,
                     },
                 },
                 prompt_prefix = "   ",

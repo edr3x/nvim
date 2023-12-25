@@ -1,6 +1,10 @@
 return {
     "akinsho/flutter-tools.nvim",
     ft = "dart",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "stevearc/dressing.nvim",
+    },
     config = function()
         require("flutter-tools").setup({
             debugger = {
@@ -14,8 +18,8 @@ return {
             widget_guides = { enabled = true, debug = false },
             dev_log = { enabled = true, open_cmd = "tabedit" },
             lsp = {
-                on_attach = require("r3x.handlers").on_attach,
-                capabilities = require("r3x.handlers").capabilities,
+                on_attach = require("r3x.plugins.lsp.settings").on_attach,
+                capabilities = require("r3x.plugins.lsp.settings").capabilities,
                 color = {
                     enabled = true,
                     background = true,
@@ -31,5 +35,6 @@ return {
             },
         })
         require("telescope").load_extension("flutter")
+        vim.keymap.set("n", "<leader>fc", "<cmd>Telescope flutter commands<CR>", { desc = "Flutter Commands" })
     end,
 }

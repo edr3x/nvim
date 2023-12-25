@@ -1,6 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    lazy = false,
+    lazy = true,
     dependencies = {
         {
             "nvim-tree/nvim-web-devicons",
@@ -56,25 +56,22 @@ return {
                 number = false,
                 relativenumber = false,
                 signcolumn = "yes",
-                hide_root_folder = false,
                 side = "right",
-                float = {
-                    enable = true,
-                    open_win_config = {
-                        relative = "editor",
-                        border = "rounded",
-                        width = 120,
-                        height = 35,
-                        row = 5,
-                        col = 75,
-                    },
-                },
+                -- float = {
+                --     enable = true,
+                --     open_win_config = {
+                --         relative = "editor",
+                --         border = "rounded",
+                --         width = 120,
+                --         height = 35,
+                --         row = 5,
+                --         col = 75,
+                --     },
+                -- },
             },
             renderer = {
                 root_folder_modifier = ":~",
-                indent_markers = {
-                    enable = true,
-                },
+                indent_markers = { enable = true },
                 icons = {
                     glyphs = {
                         git = {

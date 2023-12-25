@@ -8,11 +8,7 @@ return {
         "windwp/nvim-ts-autotag",
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-textobjects",
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        {
-            "nvim-treesitter/nvim-treesitter-context",
-            opts = {},
-        },
+        { "nvim-treesitter/nvim-treesitter-context", config = true },
     },
     ---@diagnostic disable
     config = function()
@@ -43,6 +39,7 @@ return {
                 "scss",
                 "svelte",
                 "sql",
+                "terraform",
                 "toml",
                 "tsx",
                 "typescript",
@@ -81,10 +78,6 @@ return {
                     end
                 end,
                 additional_vim_regex_highlighting = false,
-            },
-            context_commentstring = {
-                enable = true,
-                enable_autocmd = false,
             },
             incremental_selection = {
                 enable = true,

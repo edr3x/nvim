@@ -1,0 +1,19 @@
+{
+    "prettierrc": {
+        "prefix": "prettierrc",
+        "body": [
+            "{",
+            "    \"semi\": true,",
+            "    \"tabWidth\": 4,",
+            "    \"useTabs\": false,",
+            "    \"printWidth\": 120,",
+            "    \"singleQuote\": false,",
+            "    \"bracketSpacing\": true,",
+            "    \"trailingComma\": \"all\",",
+            "    \"arrowParens\": \"always\",",
+            "    \"embeddedLanguageFormatting\": \"auto\"",
+            "}"
+        ],
+        "description": "prettierrc"
+    }
+}

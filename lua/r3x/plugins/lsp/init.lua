@@ -1,8 +1,12 @@
 return {
     {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {},
+    },
+    {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "folke/neodev.nvim",
             "folke/trouble.nvim",
             "RRethy/vim-illuminate",
             "williamboman/mason-lspconfig.nvim",
@@ -10,7 +14,6 @@ return {
         },
         event = "BufReadPre",
         config = function()
-            require("neodev").setup()
             require("r3x.plugins.lsp.config")
             require("r3x.plugins.lsp.handlers")
         end,

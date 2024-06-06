@@ -3,7 +3,8 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = { "Telescope find_files" },
     keys = {
-        { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+        { "<leader>fa", "<cmd>Telescope find_files<CR>", desc = "Find sll files" },
+        { "<leader>ff", "<cmd>Telescope git_files<CR>", desc = "Find git tracked files" },
         { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Find texts" },
         { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help tags" },
         { "<leader>fr", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
@@ -15,7 +16,7 @@ return {
         { "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "List lsp symbols" },
     },
     opts = function()
-        local trouble = require("trouble.providers.telescope")
+        local trouble = require("trouble.sources.telescope")
         local delta = require("telescope.previewers").new_termopen_previewer({
             get_command = function(entry)
                 if entry.status == "??" or "A " then
@@ -39,10 +40,10 @@ return {
                 mappings = {
                     n = {
                         ["dd"] = "delete_buffer",
-                        ["<a-t>"] = trouble.open_with_trouble,
+                        ["<a-t>"] = trouble.open,
                     },
                     i = {
-                        ["<a-t>"] = trouble.open_with_trouble,
+                        ["<a-t>"] = trouble.open,
                     },
                 },
                 prompt_prefix = "   ",

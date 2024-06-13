@@ -7,7 +7,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "folke/trouble.nvim",
             "RRethy/vim-illuminate",
             "williamboman/mason-lspconfig.nvim",
             { "williamboman/mason.nvim", config = true },
@@ -17,6 +16,15 @@ return {
             require("r3x.plugins.lsp.config")
             require("r3x.plugins.lsp.handlers")
         end,
+    },
+    {
+        "folke/trouble.nvim",
+        event = "LspAttach",
+        opts = {
+            focus = true,
+            auto_open = false,
+            auto_jump = false,
+        },
     },
     -- code formatters
     {

@@ -12,21 +12,22 @@ return {
         local wk = require("which-key")
 
         wk.setup({})
-        wk.register({
-            ["1"] = "which_key_ignore",
-            ["2"] = "which_key_ignore",
-            ["3"] = "which_key_ignore",
-            ["4"] = "which_key_ignore",
-            ["5"] = "which_key_ignore",
-            c = { name = "Code Actions" },
-            b = { name = "Buffer" },
-            d = { name = "LSP diganostics" },
-            f = { name = "Telescope" },
-            g = { name = "Git" },
-            l = { name = "LSP" },
-            m = { name = "Markdown" },
-            s = { name = "Search and replace current highlight" },
-            t = { name = "Trouble" },
-        }, { prefix = "<leader>" })
+
+        wk.add({
+            { "<leader>1", hidden = true },
+            { "<leader>2", hidden = true },
+            { "<leader>3", hidden = true },
+            { "<leader>4", hidden = true },
+            { "<leader>5", hidden = true },
+            { "<leader>b", group = "Buffer" },
+            { "<leader>c", group = "Code Actions" },
+            { "<leader>d", group = "LSP diganostics" },
+            { "<leader>f", group = "Telescope" },
+            { "<leader>g", group = "Git" },
+            { "<leader>l", group = "LSP" },
+            { "<leader>m", group = "Markdown" },
+            { "<leader>s", group = "Search and replace current highlight" },
+            { "<leader>t", group = "Trouble" },
+        })
     end,
 }

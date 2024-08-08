@@ -24,6 +24,7 @@ return {
             focus = true,
             auto_open = false,
             auto_jump = false,
+            auto_refresh = false,
         },
     },
     -- code formatters

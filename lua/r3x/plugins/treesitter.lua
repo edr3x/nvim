@@ -21,6 +21,7 @@ return {
                 "go",
                 "graphql",
                 "hcl",
+                "helm",
                 "html",
                 "java",
                 "javascript",

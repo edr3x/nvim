@@ -44,6 +44,9 @@ return {
                     nls.builtins.formatting.prettierd.with({
                         disabled_filetypes = { "markdown", "yaml" },
                     }),
+                    -- nls.builtins.formatting.sql_formatter.with({
+                    --     command = { "sleek" },
+                    -- }),
                 },
             })
         end,

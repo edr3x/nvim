@@ -38,6 +38,7 @@ return {
                 debug = false,
                 sources = {
                     nls.builtins.formatting.stylua,
+                    nls.builtins.formatting.nixpkgs_fmt,
                     nls.builtins.diagnostics.yamllint.with({
                         args = require("r3x.plugins.lsp.lang.yamllint"),
                     }),

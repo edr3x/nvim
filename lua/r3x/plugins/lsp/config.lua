@@ -8,10 +8,11 @@ local servers = {
     -- prismals = {},
     dockerls = {},
     bufls = {},
+    nil_ls = {},
+    ts_ls = lang.ts,
     gopls = lang.go,
     lua_ls = lang.lua,
     yamlls = lang.yaml,
-    tsserver = lang.ts,
     rust_analyzer = lang.rust,
     terraformls = { filetypes = { "terraform", "tf" } },
 }

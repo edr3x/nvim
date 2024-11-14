@@ -43,7 +43,7 @@ return {
                         args = require("r3x.plugins.lsp.lang.yamllint"),
                     }),
                     nls.builtins.formatting.prettierd.with({
-                        disabled_filetypes = { "markdown", "yaml" },
+                        disabled_filetypes = { "markdown", "yaml", "html" },
                     }),
                     -- nls.builtins.formatting.sql_formatter.with({
                     --     command = { "sleek" },

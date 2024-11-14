@@ -12,10 +12,6 @@ return {
     --     opts = {},
     -- },
     {
-        "andweeb/presence.nvim",
-        event = "BufReadPre",
-    },
-    {
         "kylechui/nvim-surround",
         version = "*",
         opts = {},

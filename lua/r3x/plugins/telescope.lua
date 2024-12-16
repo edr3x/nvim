@@ -19,7 +19,7 @@ return {
         {
             "<leader>fg",
             function()
-                require("r3x.extensions.telescope").setup()
+                require("r3x.extensions.telescope-multigrep").setup()
             end,
             desc = "Find texts",
         },

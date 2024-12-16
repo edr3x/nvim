@@ -1,11 +1,13 @@
 return {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
     cmd = { "Telescope find_files" },
     keys = {
         { "<leader>fa", "<cmd>Telescope find_files<CR>", desc = "Find sll files" },
         { "<leader>ff", "<cmd>Telescope git_files<CR>", desc = "Find git tracked files" },
-        { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Find texts" },
         { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help tags" },
         { "<leader>fr", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
         { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "List Opened Buffers" },
@@ -14,8 +16,16 @@ return {
         { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Git status" },
         { "<leader>gt", "<cmd>Telescope git_branches<CR>", desc = "Git branches" },
         { "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "List lsp symbols" },
+        {
+            "<leader>fg",
+            function()
+                require("r3x.extensions.telescope").setup()
+            end,
+            desc = "Find texts",
+        },
     },
     opts = function()
+        require("telescope").load_extension("fzf")
         local trouble = require("trouble.sources.telescope")
         local delta = require("telescope.previewers").new_termopen_previewer({
             get_command = function(entry)
@@ -98,6 +108,9 @@ return {
                     prompt_prefix = " 󰊢  ",
                     initial_mode = "normal",
                 },
+            },
+            extensions = {
+                fzf = {},
             },
         }
     end,

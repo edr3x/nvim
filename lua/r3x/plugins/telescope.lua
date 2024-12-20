@@ -6,7 +6,7 @@ return {
     },
     cmd = { "Telescope find_files" },
     keys = {
-        { "<leader>fa", "<cmd>Telescope find_files<CR>", desc = "Find sll files" },
+        { "<leader>fa", "<cmd>Telescope find_files<CR>", desc = "Find all files" },
         { "<leader>ff", "<cmd>Telescope git_files<CR>", desc = "Find git tracked files" },
         { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help tags" },
         { "<leader>fr", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
@@ -26,7 +26,6 @@ return {
     },
     opts = function()
         require("telescope").load_extension("fzf")
-        local trouble = require("trouble.sources.telescope")
         local delta = require("telescope.previewers").new_termopen_previewer({
             get_command = function(entry)
                 if entry.status == "??" or "A " then
@@ -50,10 +49,6 @@ return {
                 mappings = {
                     n = {
                         ["dd"] = "delete_buffer",
-                        ["<a-t>"] = trouble.open,
-                    },
-                    i = {
-                        ["<a-t>"] = trouble.open,
                     },
                 },
                 prompt_prefix = "   ",

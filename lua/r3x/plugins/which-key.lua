@@ -27,7 +27,6 @@ return {
             { "<leader>l", group = "LSP" },
             { "<leader>m", group = "Markdown" },
             { "<leader>s", group = "Search and replace current highlight" },
-            { "<leader>t", group = "Trouble" },
         })
     end,
 }

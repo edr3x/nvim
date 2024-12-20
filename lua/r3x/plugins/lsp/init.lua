@@ -17,16 +17,6 @@ return {
             require("r3x.plugins.lsp.handlers")
         end,
     },
-    {
-        "folke/trouble.nvim",
-        event = "LspAttach",
-        opts = {
-            focus = true,
-            auto_open = false,
-            auto_jump = false,
-            auto_refresh = false,
-        },
-    },
     -- code formatters
     {
         "nvimtools/none-ls.nvim",

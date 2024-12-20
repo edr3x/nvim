@@ -46,11 +46,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = true,
 })
 
-vim.keymap.set("n", "dn", vim.diagnostic.goto_next)
-vim.keymap.set("n", "dN", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank({
@@ -61,15 +56,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        vim.lsp.buf.format()
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then
+            return
+        end
+
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                end,
+            })
+        end
     end,
 })
-
--- inlay hints
-vim.keymap.set("n", "<leader>lh", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }))
-end, { desc = "Toggle inlay hints" })
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])

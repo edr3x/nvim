@@ -1,9 +1,10 @@
 return {
+    -- Lsp notifications
     {
-        "folke/lazydev.nvim",
-        ft = "lua",
+        "j-hui/fidget.nvim",
         opts = {},
     },
+    -- Lsp client wrapper
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -11,6 +12,7 @@ return {
             "RRethy/vim-illuminate",
             "williamboman/mason-lspconfig.nvim",
             { "williamboman/mason.nvim", config = true },
+            { "folke/lazydev.nvim", ft = "lua", opts = {} },
         },
         event = "BufReadPre",
         config = function()
@@ -42,10 +44,5 @@ return {
                 },
             })
         end,
-    },
-    -- Lsp notifications
-    {
-        "j-hui/fidget.nvim",
-        opts = {},
     },
 }

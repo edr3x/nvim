@@ -5,10 +5,8 @@ local lang = require("r3x.plugins.lsp.lang")
 local opts = require("r3x.plugins.lsp.opts")
 
 local servers = {
-    -- prismals = {},
     dockerls = {},
     buf_ls = {},
-    nil_ls = {},
     ts_ls = lang.ts,
     gopls = lang.go,
     lua_ls = lang.lua,

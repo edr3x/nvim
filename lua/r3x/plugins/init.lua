@@ -4,18 +4,8 @@ return {
         cmd = { "G", "Git" },
     },
     -- {
-    --     "Exafunction/codeium.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "hrsh7th/nvim-cmp",
-    --     },
-    --     opts = {},
+    --     "github/copilot.vim",
     -- },
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        opts = {},
-    },
     {
         "folke/persistence.nvim",
         event = "BufReadPre",

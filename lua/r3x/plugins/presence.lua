@@ -1,7 +1,7 @@
 return {
     "vyfor/cord.nvim",
-    build = "./build || .\\build",
-    event = "VeryLazy",
+    branch = "client-server",
+    build = ":Cord update",
     opts = {
         lsp = {
             show_problem_count = true,

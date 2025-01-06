@@ -3,9 +3,6 @@ return {
         "tpope/vim-fugitive",
         cmd = { "G", "Git" },
     },
-    -- {
-    --     "github/copilot.vim",
-    -- },
     {
         "folke/persistence.nvim",
         event = "BufReadPre",

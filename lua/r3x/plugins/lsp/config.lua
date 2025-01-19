@@ -7,6 +7,7 @@ local opts = require("r3x.plugins.lsp.opts")
 local servers = {
     dockerls = {},
     buf_ls = {},
+    zls = {},
     ts_ls = lang.ts,
     gopls = lang.go,
     lua_ls = lang.lua,

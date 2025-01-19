@@ -45,6 +45,7 @@ return {
                 "vimdoc",
                 "vue",
                 "yaml",
+                "zig",
             },
             ignore_install = { "php" },
             sync_install = false,

@@ -63,14 +63,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
             return
         end
 
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = args.buf,
-                callback = function()
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = args.buf,
+            callback = function()
+                if client.supports_method("textDocument/formatting") then
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-                end,
-            })
-        end
+                end
+
+                if client.supports_method("textDocument/codeAction") then
+                    local function apply_code_action(only)
+                        local actions = vim.lsp.buf.code_action({
+                            ---@diagnostic disable-next-line
+                            context = { only = only },
+                            apply = true,
+                            return_actions = true,
+                        })
+                        -- only apply if code action is available
+                        if actions and #actions > 0 then
+                            ---@diagnostic disable-next-line
+                            vim.lsp.buf.code_action({ context = { only = only }, apply = true })
+                        end
+                    end
+                    apply_code_action({ "source.fixAll" })
+                    apply_code_action({ "source.organizeImports" })
+                end
+            end,
+        })
     end,
 })
 

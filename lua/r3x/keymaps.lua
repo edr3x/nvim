@@ -36,8 +36,6 @@ map("x", ">", ">gv", opts)
 -- buffer
 map("n", "<M-h>", "<cmd>bprev<CR>", opts)
 map("n", "<M-l>", "<cmd>bnext<CR>", opts)
--- map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close current buffer" })
-map("n", "<leader>ba", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but not current one" })
 
 -- navigate around quickfix list
 map("n", "<C-n>", "<cmd>cnext<CR>", opts)

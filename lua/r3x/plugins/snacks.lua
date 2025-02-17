@@ -10,8 +10,14 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
+        { "<leader>ntt", "<cmd>lua Snacks.explorer()<CR>", desc = "File Explorer" },
         { "<leader>bd", "<cmd>lua Snacks.bufdelete()<CR>", desc = "Delete buffer" },
-        { "<leader>ba", "<cmd>lua Snacks.bufdelete.other()<CR>", desc = "Delete buffer" },
+        { "<leader>ff", "<cmd>lua Snacks.picker.files()<CR>", desc = "Find all files" },
+        { "<leader>gs", "<cmd>lua Snacks.picker.git_status()<CR>", desc = "Git status" },
+        { "<leader>fr", "<cmd>lua Snacks.picker.resume()<CR>", desc = "Resume last search" },
+        { "<leader>fb", "<cmd>lua Snacks.picker.buffers()<CR>", desc = "List Opened Buffers" },
+        { "<leader>fs", "<cmd>lua Snacks.picker.lsp_symbols() <CR>", desc = "List lsp symbols" },
+        { "<leader>ba", "<cmd>lua Snacks.bufdelete.other()<CR>", desc = "Delete all other buffer" },
     },
     opts = {
         input = { enabled = true },
@@ -31,6 +37,16 @@ return {
             enabled = true,
             ui_select = true,
             reverse = true,
+            prompt = "   ",
+            previewers = {
+                git = {
+                    native = true,
+                    args = {
+                        "-c",
+                        "delta.side-by-side=false",
+                    },
+                },
+            },
             layout = function()
                 return vim.o.columns >= 120 and "my_picker" or "my_picker_vertical"
             end,
@@ -49,7 +65,7 @@ return {
                                 win = "input",
                                 height = 1,
                                 border = "rounded",
-                                title = "{title} {live} {flags}",
+                                title = "{title}",
                                 title_pos = "center",
                             },
                             { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
@@ -107,13 +123,13 @@ return {
                         icon = " ",
                         key = "f",
                         desc = "Find Files",
-                        action = ":lua require('telescope.builtin').find_files()",
+                        action = ":lua Snacks.picker.files()",
                     },
                     {
                         icon = " ",
                         key = "c",
                         desc = "Config",
-                        action = ":cd $HOME/.config/nvim | lua require('telescope.builtin').find_files()",
+                        action = ":lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })",
                     },
                     {
                         icon = "󰒲 ",

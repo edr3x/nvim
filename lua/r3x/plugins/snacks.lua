@@ -19,10 +19,13 @@ return {
         bigfile = { enabled = true },
         indent = {
             priority = 1,
-            enabled = false,
+            enabled = true,
             scope = { char = "┊" },
             indent = { char = "┊" },
             animate = { enabled = false },
+            filter = function(_)
+                return vim.bo.filetype == "yaml"
+            end,
         },
         picker = {
             enabled = true,
@@ -34,8 +37,8 @@ return {
             preset = {
                 keys = {
                     { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                    { icon = " ", key = "t", desc = "File Tree", action = ":Oil" },
                     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                    { icon = " ", key = "t", desc = "File Explorer", action = ":Oil" },
                     {
                         icon = " ",
                         key = "f",

@@ -7,8 +7,8 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+        cmdline = { enabled = false },
         sources = {
-            cmdline = { enabled = false },
             default = { "lsp", "path", "snippets", "buffer" },
             providers = {
                 -- copilot = {

@@ -12,6 +12,16 @@ return {
             },
         },
     },
+    win = {
+        preview = {
+            wo = {
+                number = false,
+                foldcolumn = "0",
+                signcolumn = "no",
+                relativenumber = false,
+            },
+        },
+    },
     layout = function()
         return vim.o.columns >= 120 and "my_picker" or "my_picker_vertical"
     end,

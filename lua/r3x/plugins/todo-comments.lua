@@ -17,7 +17,7 @@ return {
         },
         {
             "<leader>ft",
-            ":TodoTelescope<CR>",
+            ":lua Snacks.picker.todo_comments()<CR>",
             desc = "search todo comments",
         },
     },

@@ -11,7 +11,7 @@ return {
     lazy = false,
     keys = {
         { "<leader>fg", "<cmd>lua Snacks.picker.grep()<CR>", desc = "Grep" },
-        { "<leader>ntt", "<cmd>lua Snacks.explorer()<CR>", desc = "File Explorer" },
+        { "<leader>tt", "<cmd>lua Snacks.explorer()<CR>", desc = "File Explorer" },
         { "<leader>bd", "<cmd>lua Snacks.bufdelete()<CR>", desc = "Delete buffer" },
         { "<leader>ff", "<cmd>lua Snacks.picker.files()<CR>", desc = "Find all files" },
         { "<leader>gs", "<cmd>lua Snacks.picker.git_status()<CR>", desc = "Git status" },

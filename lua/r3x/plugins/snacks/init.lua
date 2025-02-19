@@ -10,6 +10,7 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
+        { "<leader>fg", "<cmd>lua Snacks.picker.grep()<CR>", desc = "Grep" },
         { "<leader>ntt", "<cmd>lua Snacks.explorer()<CR>", desc = "File Explorer" },
         { "<leader>bd", "<cmd>lua Snacks.bufdelete()<CR>", desc = "Delete buffer" },
         { "<leader>ff", "<cmd>lua Snacks.picker.files()<CR>", desc = "Find all files" },

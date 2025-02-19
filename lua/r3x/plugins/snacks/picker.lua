@@ -22,6 +22,28 @@ return {
             },
         },
     },
+    sources = {
+        grep = {
+            win = {
+                input = {
+                    keys = {
+                        ["<space><space>"] = {
+                            "multi_grep",
+                            desc = "Add -g flag on ripgrep",
+                            mode = { "n", "i" },
+                        },
+                    },
+                },
+            },
+            actions = {
+                ["multi_grep"] = function(picker)
+                    local current = picker.input:get()
+                    picker.input:set("", current .. " -- -g=")
+                    picker:find({ refresh = true })
+                end,
+            },
+        },
+    },
     layout = function()
         return vim.o.columns >= 120 and "my_picker" or "my_picker_vertical"
     end,

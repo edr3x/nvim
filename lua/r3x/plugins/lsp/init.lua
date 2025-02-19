@@ -23,6 +23,9 @@ return {
     -- code formatters
     {
         "nvimtools/none-ls.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
         event = "LspAttach",
         config = function()
             local nls = require("null-ls")

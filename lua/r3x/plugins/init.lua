@@ -1,7 +1,7 @@
 return {
     {
-        "tpope/vim-fugitive",
-        cmd = { "G", "Git" },
+        "towolf/vim-helm",
+        ft = "yaml",
     },
     {
         "mbbill/undotree",

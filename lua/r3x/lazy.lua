@@ -25,7 +25,6 @@ local opts = {
         rtp = {
             disabled_plugins = {
                 "gzip",
-                "man",
                 "matchit",
                 "netrwPlugin",
                 "rplugin",

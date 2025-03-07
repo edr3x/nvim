@@ -12,7 +12,6 @@ return {
             "RRethy/vim-illuminate",
             "williamboman/mason-lspconfig.nvim",
             { "williamboman/mason.nvim", config = true },
-            { "folke/lazydev.nvim", ft = "lua", opts = {} },
         },
         event = "BufReadPre",
         config = function()

@@ -2,13 +2,13 @@ return {
     -- Lsp notifications
     {
         "j-hui/fidget.nvim",
+        event = "BufReadPre",
         opts = {},
     },
     -- Lsp client wrapper
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "saghen/blink.cmp",
             "RRethy/vim-illuminate",
             "williamboman/mason-lspconfig.nvim",
             { "williamboman/mason.nvim", config = true },

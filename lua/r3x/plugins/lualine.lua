@@ -61,7 +61,7 @@ return {
                 theme = require("r3x.utils.lualine-themes").transparent(),
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
-                disabled_filetypes = { "alpha", "dashboard", "lazy" },
+                disabled_filetypes = { "snacks_dashboard", "lazy", "mason" },
                 always_divide_middle = true,
                 globalstatus = true,
             },

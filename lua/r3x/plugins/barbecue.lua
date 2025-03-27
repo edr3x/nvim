@@ -1,6 +1,6 @@
 return {
     "edr3x/barbecue.nvim",
-    event = "BufReadPre",
+    event = "LspAttach",
     dependencies = {
         "SmiteshP/nvim-navic",
         "nvim-tree/nvim-web-devicons",

@@ -1,5 +1,6 @@
 return {
-    "edr3x/lualine.nvim",
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = function()
         local lspStatus = {
             function()
@@ -57,7 +58,7 @@ return {
         return {
             options = {
                 icons_enabled = true,
-                theme = "custom_transparent",
+                theme = require("r3x.utils.lualine-themes").transparent(),
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = { "alpha", "dashboard", "lazy" },

@@ -1,18 +1,3 @@
-local signs = {
-    { name = "DiagnosticSignError", text = " " },
-    { name = "DiagnosticSignWarn", text = " " },
-    { name = "DiagnosticSignHint", text = " " },
-    { name = "DiagnosticSignInfo", text = " " },
-}
-
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {
-        texthl = sign.name,
-        text = sign.text,
-        numhl = "",
-    })
-end
-
 vim.diagnostic.config({
     virtual_text = true,
     update_in_insert = true,
@@ -25,6 +10,14 @@ vim.diagnostic.config({
         source = true,
         header = "",
         prefix = "",
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.ERROR] = " ",
+        },
     },
 })
 
@@ -66,11 +59,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = args.buf,
             callback = function()
-                if client.supports_method("textDocument/formatting") then
+                if client:supports_method("textDocument/formatting") then
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
                 end
 
-                if client.supports_method("textDocument/codeAction") then
+                if client:supports_method("textDocument/codeAction") then
                     local function apply_code_action(only)
                         local actions = vim.lsp.buf.code_action({
                             ---@diagnostic disable-next-line

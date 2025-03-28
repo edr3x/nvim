@@ -18,9 +18,7 @@ M.on_attach = function(client, bufnr)
         vim.keymap.set("n", keys, func, { buffer = bufnr, noremap = true, silent = true, desc = desc })
     end
 
-    nmap("K", function()
-        vim.lsp.buf.hover({ border = "rounded" })
-    end, "Open hover")
+    nmap("K", vim.lsp.buf.hover, "Open hover")
     nmap("<leader>r", vim.lsp.buf.rename, "Rename")
     nmap("<leader>dr", vim.lsp.buf.references, "References")
     nmap("<leader>ca", vim.lsp.buf.code_action, "Code action")
@@ -34,9 +32,7 @@ M.on_attach = function(client, bufnr)
     nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
     nmap("<leader>e", vim.diagnostic.open_float, "Open diagnostic float")
 
-    vim.keymap.set("i", "<M-t>", function()
-        vim.lsp.buf.signature_help({ border = "rounded" })
-    end, { buffer = bufnr })
+    vim.keymap.set("i", "<M-t>", vim.lsp.buf.signature_help, { buffer = bufnr })
 
     -- inlay hints
     nmap("<leader>lh", function()

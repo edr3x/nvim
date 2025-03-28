@@ -20,6 +20,7 @@ set.splitbelow = true
 set.splitright = true
 set.cursorline = true
 set.signcolumn = "yes"
+set.winborder = "rounded"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 set.smartcase = true

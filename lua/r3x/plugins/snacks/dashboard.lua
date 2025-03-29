@@ -8,9 +8,6 @@ return {
             { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
             { icon = " ", key = "f", desc = "Find Files", action = ":lua Snacks.picker.files()" },
             { icon = " ", key = "g", desc = "Grep Files", action = ":lua Snacks.picker.grep()" },
-            -- stylua: ignore start
-            { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })" },
-            -- stylua: ignore end
             { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },

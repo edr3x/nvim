@@ -1,4 +1,26 @@
----{{ LSP configuration
+---[[ LSP configuration
+
+--[[ INFO: read filenames on lsp/ directory and enable those
+local lsp_files = {}
+local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
+
+for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
+    -- Read the first line of the file
+    local f = io.open(file, "r")
+    local first_line = f and f:read("*l") or ""
+    if f then
+        f:close()
+    end
+    -- Only include the file if it doesn't start with "-- disable"
+    if not first_line:match("^%-%- disable") then
+        local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
+        table.insert(lsp_files, name)
+    end
+end
+
+vim.lsp.enable(lsp_files)
+--]]
+
 vim.lsp.enable({
     "buf_ls",
     "dockerls",
@@ -75,17 +97,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end
 
                 if client:supports_method("textDocument/codeAction") then
-                    local function apply_code_action(only)
-                        local actions = vim.lsp.buf.code_action({
-                            ---@diagnostic disable-next-line
-                            context = { only = only },
-                            apply = true,
-                            return_actions = true,
-                        })
+                    local function apply_code_action(action_type)
+                        local ctx = { only = action_type, diagnostics = {} }
+                        local actions = vim.lsp.buf.code_action({ context = ctx, apply = true, return_actions = true })
+
                         -- only apply if code action is available
                         if actions and #actions > 0 then
-                            ---@diagnostic disable-next-line
-                            vim.lsp.buf.code_action({ context = { only = only }, apply = true })
+                            vim.lsp.buf.code_action({ context = ctx, apply = true })
                         end
                     end
                     apply_code_action({ "source.fixAll" })
@@ -122,8 +140,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         nmap("<leader>dh", "<cmd>sp | lua vim.lsp.buf.definition()<cr>", "Goto definition (h-split)")
 
         -- Diagnostic
-        nmap("dn", vim.diagnostic.goto_next, "Goto next diagnostic")
-        nmap("dN", vim.diagnostic.goto_prev, "Goto prev diagnostic")
+        nmap("dn", function()
+            vim.diagnostic.jump({ count = 1, float = true })
+        end, "Goto next diagnostic")
+        nmap("dN", function()
+            vim.diagnostic.jump({ count = -1, float = true })
+        end, "Goto prev diagnostic")
         nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
         nmap("<leader>e", vim.diagnostic.open_float, "Open diagnostic float")
 

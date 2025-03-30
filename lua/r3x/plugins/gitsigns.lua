@@ -11,6 +11,7 @@ return {
         { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<CR>" },
     },
     opts = {
+        preview_config = { border = "rounded" },
         signs = {
             add = { text = " +" },
             change = { text = " " },

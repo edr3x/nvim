@@ -1,6 +1,6 @@
 ---[[ LSP configuration
 
---[[ INFO: read filenames on lsp/ directory and enable those
+-- INFO: read filenames on lsp/ directory and enable those
 local lsp_files = {}
 local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
 
@@ -19,8 +19,9 @@ for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
 end
 
 vim.lsp.enable(lsp_files)
---]]
 
+-- INFO: for mannual enable of lsp servers
+--[[
 vim.lsp.enable({
     "buf_ls",
     "dockerls",
@@ -32,6 +33,7 @@ vim.lsp.enable({
     "yamlls",
 })
 
+-- NOTE: no need to do this on nvim v0.11+ with vim.lsp.enable()
 local capabilities = {
     textDocument = {
         foldingRange = {
@@ -44,6 +46,8 @@ local capabilities = {
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 vim.lsp.config("*", { capabilities = capabilities })
+--]]
+
 ---]]
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])

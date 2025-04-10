@@ -1,6 +1,13 @@
 local M = {}
 
 M.transparent = function()
+    -- set StatusLine to be transparent
+    vim.api.nvim_create_autocmd({ "UiEnter", "ColorScheme" }, {
+        callback = function()
+            vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+        end,
+    })
+
     local colors = {
         bg = "NONE",
         fg = "#B0BEC5",

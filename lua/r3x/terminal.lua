@@ -45,7 +45,7 @@ local toggle_terminal = function()
             vim.cmd.terminal()
         end
         -- unlist the terminal from buffer list
-        vim.api.nvim_buf_set_option(state.floating.buf, "buflisted", false)
+        vim.api.nvim_set_option_value("buflisted", false, { buf = state.floating.buf })
         vim.cmd("startinsert")
     else
         vim.api.nvim_win_hide(state.floating.win)

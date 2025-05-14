@@ -10,6 +10,12 @@ return {
         opts = {},
     },
     {
+        "kylechui/nvim-surround",
+        event = "BufReadPre",
+        version = "*",
+        opts = {},
+    },
+    {
         "towolf/vim-helm",
         ft = "yaml",
     },

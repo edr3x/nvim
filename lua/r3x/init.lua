@@ -4,4 +4,4 @@ require("r3x.lazy")
 require("r3x.terminal")
 require("r3x.lsp")
 
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd.colorscheme("tokyonight")

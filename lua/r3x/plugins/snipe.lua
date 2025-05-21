@@ -1,7 +1,14 @@
 return {
     "leath-dub/snipe.nvim",
     keys = {
-        { "<leader>o", ":lua require('snipe').open_buffer_menu()<cr>", desc = "Open Snipe buffer menu" },
+        {
+            "<leader>o",
+            function()
+                require("snipe").open_buffer_menu()
+            end,
+            silent = true,
+            desc = "Open Snipe buffer menu",
+        },
     },
     opts = {
         ui = {

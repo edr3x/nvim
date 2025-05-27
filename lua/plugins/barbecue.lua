@@ -15,6 +15,6 @@ return {
         },
     },
     opts = {
-        kinds = require("r3x.utils.kinds").icons,
+        kinds = require("utils.kinds").icons,
     },
 }

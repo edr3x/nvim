@@ -58,7 +58,7 @@ return {
         return {
             options = {
                 icons_enabled = true,
-                theme = require("r3x.utils.lualine-themes").transparent(),
+                theme = require("utils.lualine-themes").transparent(),
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = { "snacks_dashboard", "lazy", "mason" },

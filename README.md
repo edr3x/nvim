@@ -31,4 +31,4 @@ sudo pacman -S wget tar curl unzip git nodejs npm gzip xclip
 sudo pacman -S deno webkit2gtk
 ```
 
-> Every plugin used can be found in `lua/r3x/plugins/`
+> Every plugin used can be found in `lua/plugins/`

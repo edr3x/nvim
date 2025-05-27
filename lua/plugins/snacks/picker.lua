@@ -1,10 +1,11 @@
-local style = require("r3x.plugins.snacks.picker-style")
+local style = require("plugins.snacks.picker-style")
 
 return {
     enabled = true,
     ui_select = true,
     reverse = true,
     prompt = "   ",
+    matcher = { frecency = true },
     previewers = {
         git = {
             native = true,

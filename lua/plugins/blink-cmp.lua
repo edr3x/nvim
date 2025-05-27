@@ -26,7 +26,7 @@ return {
         },
         appearance = {
             nerd_font_variant = "normal",
-            kind_icons = require("r3x.utils.kinds").icons,
+            kind_icons = require("utils.kinds").icons,
         },
     },
 }

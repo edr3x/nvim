@@ -24,9 +24,9 @@ return {
         input = { enabled = true },
         image = { enabled = false },
         bigfile = { enabled = true },
-        styles = require("r3x.plugins.snacks.styles"),
-        indent = require("r3x.plugins.snacks.indent"),
-        picker = require("r3x.plugins.snacks.picker"),
-        dashboard = require("r3x.plugins.snacks.dashboard"),
+        styles = require("plugins.snacks.styles"),
+        indent = require("plugins.snacks.indent"),
+        picker = require("plugins.snacks.picker"),
+        dashboard = require("plugins.snacks.dashboard"),
     },
 }

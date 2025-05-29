@@ -50,17 +50,6 @@ vim.lsp.config("*", { capabilities = capabilities })
 
 ---]]
 
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.hl.on_yank({
-            higroup = "IncSearch", -- see `:highlight` for more options
-            timeout = 200,
-        })
-    end,
-})
-
 vim.diagnostic.config({
     virtual_text = true,
     update_in_insert = true,

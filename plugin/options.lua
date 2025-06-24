@@ -41,3 +41,12 @@ set.undofile = true
 set.swapfile = false
 set.undolevels = 10000
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- disable blinking
+set.guicursor = {
+    "n-v-c:block", -- Normal, Visual, Command: block cursor (non-blinking)
+    "i-ci-ve:ver25", -- Insert, Insert-command, Visual-excl: vertical bar
+    "r-cr:hor20", -- Replace, Command Replace: horizontal bar
+    "o:hor50", -- Operator-pending: horizontal bar
+    "t:block", -- Terminal: block (non-blinking)
+}

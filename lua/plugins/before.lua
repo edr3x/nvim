@@ -1,5 +1,6 @@
 return {
     "bloznelis/before.nvim",
+    event = "BufReadPre",
     config = function()
         local before = require("before")
         before.setup({

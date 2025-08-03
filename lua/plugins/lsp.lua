@@ -24,5 +24,8 @@ return {
         config = true,
     },
     -- Token Illuminate
-    { "RRethy/vim-illuminate" },
+    {
+        "RRethy/vim-illuminate",
+        event = "BufReadPre",
+    },
 }

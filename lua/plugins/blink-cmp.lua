@@ -1,7 +1,6 @@
 return {
     "saghen/blink.cmp",
     event = "LspAttach",
-    build = "...",
     version = "1.*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config

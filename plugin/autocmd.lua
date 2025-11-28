@@ -9,14 +9,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
--- remove empty lines from end of the file
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = "*",
     callback = function()
-        local last_line = vim.fn.line("$")
-        while last_line > 1 and vim.fn.getline(last_line):match("^%s*$") do
-            vim.api.nvim_buf_set_lines(0, last_line - 1, last_line, false, {})
-            last_line = last_line - 1
+        if vim.bo.filetype == "yaml" or vim.bo.filetype == "yaml.helm-values" then
+            require("snacks").indent.enable()
+            return
         end
+        require("snacks").indent.disable()
     end,
 })

@@ -19,7 +19,10 @@ return {
     },
     -- Lsp installer and loader
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+        },
         event = "BufReadPre",
         config = true,
     },

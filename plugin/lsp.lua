@@ -1,53 +1,12 @@
 ---[[ LSP configuration
+local installedPacks = require("mason-registry").get_installed_packages()
 
--- INFO: read filenames on lsp/ directory and enable those
-local lsp_files = {}
-local lsp_dir = vim.fn.stdpath("config") .. "/lsp/"
+local lspNames = vim.iter(installedPacks):fold({}, function(acc, pack)
+    table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
+    return acc
+end)
 
-for _, file in ipairs(vim.fn.globpath(lsp_dir, "*.lua", false, true)) do
-    -- Read the first line of the file
-    local f = io.open(file, "r")
-    local first_line = f and f:read("*l") or ""
-    if f then
-        f:close()
-    end
-    -- Only include the file if it doesn't start with "-- disable"
-    if not first_line:match("^%-%- disable") then
-        local name = vim.fn.fnamemodify(file, ":t:r") -- `:t` gets filename, `:r` removes extension
-        table.insert(lsp_files, name)
-    end
-end
-
-vim.lsp.enable(lsp_files)
-
--- INFO: for mannual enable of lsp servers
---[[
-vim.lsp.enable({
-    "buf_ls",
-    "dockerls",
-    "gopls",
-    "lua_ls",
-    "rust_analyzer",
-    "terraform_lsp",
-    "ts_ls",
-    "yamlls",
-})
-
--- NOTE: no need to do this on nvim v0.11+ with vim.lsp.enable()
-local capabilities = {
-    textDocument = {
-        foldingRange = {
-            lineFoldingOnly = true,
-            dynamicRegistration = false,
-        },
-    },
-}
-
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-vim.lsp.config("*", { capabilities = capabilities })
---]]
-
+vim.lsp.enable(lspNames)
 ---]]
 
 vim.diagnostic.config({

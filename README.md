@@ -39,33 +39,4 @@ sudo pacman -S deno webkit2gtk
 
 > Every plugin used can be found in `lua/plugins/`
 
-## 🛠️ Install LSP Client Configs
-
-To fetch and enable an LSP client configuration from the [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) repository, use the included helper script.
-
-> NOTE:
->
-> `curl`, `jq`, and `fzf` is required for this step
-
-### 📥 Steps
-
-1. Make the script executable:
-
-```bash
-chmod +x getlsp
-```
-
-2. Run the script
-
-```bash
-./getlsp
-```
-
-3. You’ll see a fuzzy-search menu (powered by fzf) listing available LSP client configs.
-
-4. Select one — e.g. clangd.lua — and the script will:
-    - Download the file from the official nvim-lspconfig GitHub repo.
-    - Save it locally as `clangd.lua` in `lsp/` directory .
-
-
-**🧠 This allows you to install individual LSP configurations quickly, without cloning or browsing GitHub manually.**
+## 🛠️ To install LSP just install the LSP server from `:Mason`

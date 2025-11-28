@@ -5,7 +5,6 @@ return {
         keys = {
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             { icon = " ", key = "t", desc = "File Tree", action = ":Oil" },
-            { icon = " ", key = "d", desc = "DiffView", action = ":DiffviewOpen" },
             { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
             { icon = " ", key = "f", desc = "Find Files", action = ":lua Snacks.picker.files()" },
             { icon = " ", key = "g", desc = "Grep Files", action = ":lua Snacks.picker.grep()" },

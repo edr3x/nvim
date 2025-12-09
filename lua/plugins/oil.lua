@@ -17,7 +17,7 @@ return {
             ["<A-d>"] = "actions.close",
             ["<A-w>"] = "actions.preview",
             ["<C-x>"] = "actions.select_split",
-            ["<C-v>"] = "actions.select_vsplit",
+            ["<C-|>"] = "actions.select_vsplit",
         },
     },
 }

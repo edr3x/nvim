@@ -7,6 +7,7 @@ set.relativenumber = true
 
 set.tabstop = 4
 set.scrolloff = 15
+set.sidescrolloff = 15
 set.shiftwidth = 4
 set.softtabstop = 4
 set.hlsearch = false

@@ -88,6 +88,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         nmap("<leader>dr", vim.lsp.buf.references, "References")
         nmap("<leader>ca", vim.lsp.buf.code_action, "Code action")
         nmap("<leader>df", vim.lsp.buf.definition, "Goto definition")
+        nmap("<leader>di", vim.lsp.buf.implementation, "Goto implimentation")
         nmap("<leader>ds", "<cmd>vs | lua vim.lsp.buf.definition()<cr>", "Goto definition (v-split)")
         nmap("<leader>dh", "<cmd>sp | lua vim.lsp.buf.definition()<cr>", "Goto definition (h-split)")
 

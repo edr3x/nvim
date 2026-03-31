@@ -49,6 +49,10 @@
       "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
+    "nvim-lspconfig": {
+      "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
     "nvim-tmux-navigation": {
       "rev": "4898c98702954439233fdaf764c39636681e2861",
       "src": "https://github.com/alexghergh/nvim-tmux-navigation"

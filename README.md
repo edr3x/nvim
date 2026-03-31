@@ -2,7 +2,7 @@
 
 ## 🧠 Minimum Supported Version
 
-> **Neovim `v0.11` or later is required**
+> **Neovim `v0.12` or later is required**
 
 ---
 

@@ -1,3 +1,20 @@
+vim.pack.add({
+    "https://github.com/folke/lazydev.nvim",
+    "https://github.com/j-hui/fidget.nvim",
+    "https://github.com/mason-org/mason.nvim",
+    "https://github.com/edr3x/vim-illuminate",
+})
+
+require("lazydev").setup({
+    library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    },
+})
+
+require("fidget").setup({})
+
+require("mason").setup()
+
 ---[[ LSP configuration
 local installedPacks = require("mason-registry").get_installed_packages()
 

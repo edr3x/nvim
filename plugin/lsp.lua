@@ -50,14 +50,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
                 if client:supports_method("textDocument/codeAction") then
                     local function apply_code_action(action_type)
-                        local ctx = { only = action_type, diagnostics = {} }
-                        local actions = vim.lsp.buf.code_action({ context = ctx, apply = true, return_actions = true })
+                        local params = {
+                            textDocument = vim.lsp.util.make_text_document_params(args.buf),
+                            range = {
+                                start = { line = 0, character = 0 },
+                                ["end"] = { line = vim.api.nvim_buf_line_count(args.buf), character = 0 },
+                            },
+                        }
 
-                        -- only apply if code action is available
-                        if actions and #actions > 0 then
-                            vim.lsp.buf.code_action({ context = ctx, apply = true })
+                        ---@diagnostic disable-next-line: inject-field
+                        params.context = { only = action_type, diagnostics = {} }
+                        local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 1000)
+                        for _, res in pairs(result or {}) do
+                            for _, action in pairs(res.result or {}) do
+                                if action.edit then
+                                    vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+                                elseif action.command then
+                                    client:exec_cmd(action.command, { bufnr = args.buf })
+                                end
+                            end
                         end
                     end
+
                     apply_code_action({ "source.fixAll" })
                     apply_code_action({ "source.organizeImports" })
                 end

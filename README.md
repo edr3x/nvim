@@ -1,6 +1,6 @@
-# 🚀 Neovim Config
+# Neovim Config
 
-## 🧠 Minimum Supported Version
+## Minimum Supported Version
 
 > **Neovim `v0.12` or later is required**
 
@@ -9,10 +9,6 @@
 ## HomePage
 
 ![Greeting](https://user-images.githubusercontent.com/45848083/233694894-7c6370d0-8e57-4bbb-ace5-f626738230a0.png)
-
-## FileTree
-
-![nvim-tree](https://user-images.githubusercontent.com/45848083/233694988-5251c531-beca-4a8d-9a2c-ba723e0e6443.png)
 
 ## Code Environment
 
@@ -39,4 +35,4 @@ sudo pacman -S deno webkit2gtk
 
 > Every plugin used can be found in `plugin/`
 
-## 🛠️ To install LSP just install the LSP server from `:Mason`
+## To install Language Server just open `:Mason` and install from there

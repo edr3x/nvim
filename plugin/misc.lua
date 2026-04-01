@@ -1,9 +1,10 @@
 vim.pack.add({
     "https://github.com/windwp/nvim-autopairs",
-    "https://github.com/folke/which-key.nvim",
-    "https://github.com/mbbill/undotree",
 })
 
-require("which-key").setup({})
-
-vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })
+vim.keymap.set("n", "<leader>u", function()
+    vim.cmd.packadd("nvim.undotree")
+    require("undotree").open({
+        command = "topleft 35vnew",
+    })
+end, { desc = "Toggle UndoTree" })

@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end,
 })
 
-vim.pack.add({ "https://github.com/toppair/peek.nvim" })
+vim.pack.add({ "gh:toppair/peek.nvim" })
 
 vim.keymap.set("n", "<leader>md", function()
     local peek = require("peek")

@@ -1,6 +1,6 @@
 vim.pack.add({
-    "https://github.com/folke/snacks.nvim",
-    "https://github.com/folke/persistence.nvim",
+    "gh:folke/snacks.nvim",
+    "gh:folke/persistence.nvim",
 })
 
 local dashboard = {

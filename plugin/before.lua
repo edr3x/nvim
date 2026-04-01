@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/bloznelis/before.nvim" })
+vim.pack.add({ "gh:bloznelis/before.nvim" })
 
 local status_ok, before = pcall(require, "before")
 if not status_ok then

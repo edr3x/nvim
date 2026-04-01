@@ -29,6 +29,12 @@
 sudo pacman -S wget tar curl unzip git nodejs npm gzip xclip 
 ```
 
+- create git insteadOf
+
+```bash
+git config --global url."https://github.com/".insteadOf "gh:"
+```
+
 - For Markdown preview we need `deno` and `webkit2gtk`
 
 ```bash
@@ -38,3 +44,4 @@ sudo pacman -S deno webkit2gtk
 > Every plugin used can be found in `plugin/`
 
 ## To install Language Server just open `:Mason` and install from there
+

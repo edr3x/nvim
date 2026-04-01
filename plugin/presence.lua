@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-    "https://github.com/vyfor/cord.nvim",
+    "gh:vyfor/cord.nvim",
 })
 
 require("cord").setup({

@@ -1,3 +1,3 @@
-vim.pack.add({ "https://github.com/Bekaboo/dropbar.nvim" })
+vim.pack.add({ "gh:Bekaboo/dropbar.nvim" })
 
 require("dropbar").setup({})

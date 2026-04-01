@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/leath-dub/snipe.nvim" })
+vim.pack.add({ "gh:leath-dub/snipe.nvim" })
 
 require("snipe").setup({
     ui = {

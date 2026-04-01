@@ -1,5 +1,5 @@
 vim.pack.add({
-    "https://github.com/folke/todo-comments.nvim",
+    "gh:folke/todo-comments.nvim",
 })
 
 local td = require("todo-comments")

@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/edr3x/better-escape.nvim" })
+vim.pack.add({ "gh:edr3x/better-escape.nvim" })
 
 require("better_escape").setup({
     mapping = { "jk", "kj", "JK", "KJ", "jK", "kJ", "Jk", "Kj" },

@@ -12,11 +12,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
     {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter",
+        src = "gh:nvim-treesitter/nvim-treesitter",
         version = "main",
     },
     {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter-context",
+        src = "gh:nvim-treesitter/nvim-treesitter-context",
     },
 })
 

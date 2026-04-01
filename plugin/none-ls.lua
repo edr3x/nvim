@@ -1,6 +1,6 @@
 vim.pack.add({
-    "https://github.com/nvimtools/none-ls.nvim",
-    "https://github.com/nvim-lua/plenary.nvim",
+    "gh:nvimtools/none-ls.nvim",
+    "gh:nvim-lua/plenary.nvim",
 })
 
 local nls = require("null-ls")

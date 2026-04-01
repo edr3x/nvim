@@ -8,14 +8,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = "*",
-    callback = function()
-        if vim.bo.filetype == "yaml" or vim.bo.filetype == "yaml.helm-values" then
-            require("snacks").indent.enable()
-            return
-        end
-        require("snacks").indent.disable()
-    end,
-})

@@ -1,25 +1,55 @@
+local set = vim.opt
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.markdown_recommended_style = 0
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
+set.nu = true
+set.relativenumber = true
 
-vim.opt.rtp:prepend(lazypath)
+set.tabstop = 4
+set.scrolloff = 15
+set.sidescrolloff = 15
+set.shiftwidth = 4
+set.softtabstop = 4
+set.hlsearch = false
+set.expandtab = true
+set.incsearch = true
 
-require("lazy").setup({ import = "plugins" }, {
-    change_detection = {
-        enabled = true,
-        notify = false,
-    },
-})
+set.showmode = false
+set.splitbelow = true
+set.splitright = true
+set.cursorline = true
+set.signcolumn = "yes"
+set.winborder = "rounded"
 
-vim.cmd.colorscheme("tokyonight")
+-- Case-insensitive searching UNLESS \C or capital in search
+set.smartcase = true
+set.ignorecase = true
+
+set.timeout = true
+set.updatetime = 300
+set.timeoutlen = 300
+
+-- Better completion experience
+set.completeopt = "menuone,noselect"
+
+set.wrap = false
+set.list = false
+set.smartindent = true
+set.termguicolors = true
+
+set.backup = false
+set.undofile = true
+set.swapfile = false
+set.undolevels = 10000
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- disable blinking
+set.guicursor = {
+    "n-v-c:block", -- Normal, Visual, Command: block cursor (non-blinking)
+    "i-ci-ve:ver25", -- Insert, Insert-command, Visual-excl: vertical bar
+    "r-cr:hor20", -- Replace, Command Replace: horizontal bar
+    "o:hor50", -- Operator-pending: horizontal bar
+    "t:block", -- Terminal: block (non-blinking)
+}

@@ -1,29 +1,27 @@
-# 🚀 Neovim Config
+# Neovim Config
 
-## 🧠 Minimum Supported Version
+## Minimum Supported Version
 
-> **Neovim `v0.11` or later is required**
+> **Neovim `v0.12` or later is required**
 
 ---
 
 ## HomePage
 
-![Greeting](https://user-images.githubusercontent.com/45848083/233694894-7c6370d0-8e57-4bbb-ace5-f626738230a0.png)
-
-## FileTree
-
-![nvim-tree](https://user-images.githubusercontent.com/45848083/233694988-5251c531-beca-4a8d-9a2c-ba723e0e6443.png)
+![Greeting](https://github.com/user-attachments/assets/6458e244-3c0f-4a56-a426-9e817ca48233)
 
 ## Code Environment
 
-![environment](https://user-images.githubusercontent.com/45848083/233695048-2e9889af-210b-4a4e-90c6-cc4528322a43.png)
+![environment](https://github.com/user-attachments/assets/a1a95343-90c7-4fea-8f12-0f8812958f7f)
 
 ## Picker
 
-![picker](https://user-images.githubusercontent.com/45848083/233695134-5abbd833-74a2-4d21-8d03-5618c7784643.png)
+![picker](https://github.com/user-attachments/assets/44d056e7-51aa-4f74-8f5c-81cd17abc215)
 
 ## Terminal
-![terminal](https://user-images.githubusercontent.com/45848083/233695183-b03c4d6c-8830-449a-8b8c-8c4ba9071c25.png)
+
+![terminal](https://github.com/user-attachments/assets/85d948a8-a9c8-4500-a432-55476c649713)
+
 
 ## Requirements
 
@@ -37,6 +35,6 @@ sudo pacman -S wget tar curl unzip git nodejs npm gzip xclip
 sudo pacman -S deno webkit2gtk
 ```
 
-> Every plugin used can be found in `lua/plugins/`
+> Every plugin used can be found in `plugin/`
 
-## 🛠️ To install LSP just install the LSP server from `:Mason`
+## To install Language Server just open `:Mason` and install from there

@@ -1,12 +1,57 @@
+vim.pack.add({
+    "https://github.com/folke/lazydev.nvim",
+    "https://github.com/j-hui/fidget.nvim",
+    "https://github.com/mason-org/mason.nvim",
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/edr3x/vim-illuminate",
+})
+
+require("lazydev").setup({
+    library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    },
+})
+
+require("fidget").setup({})
+
+require("mason").setup()
+
 ---[[ LSP configuration
-local installedPacks = require("mason-registry").get_installed_packages()
+local registry = require("mason-registry")
 
-local lspNames = vim.iter(installedPacks):fold({}, function(acc, pack)
-    table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
-    return acc
+local ensure_installed = {
+    "buf",
+    "gopls",
+    "stylua",
+    "clangd",
+    "yamllint",
+    "prettierd",
+    "rust-analyzer",
+    "lua-language-server",
+    "typescript-language-server",
+    "dockerfile-language-server",
+}
+
+registry.refresh(function()
+    for _, name in ipairs(ensure_installed) do
+        local ok, pkg = pcall(registry.get_package, name)
+        if ok and not pkg:is_installed() then
+            pkg:install()
+        end
+    end
+
+    -- Collect LSPs
+    local lspNames = {}
+
+    for _, pkg in ipairs(registry.get_installed_packages()) do
+        local spec = pkg.spec
+        if spec.neovim and spec.neovim.lspconfig then
+            table.insert(lspNames, spec.neovim.lspconfig)
+        end
+    end
+
+    vim.lsp.enable(lspNames)
 end)
-
-vim.lsp.enable(lspNames)
 ---]]
 
 vim.diagnostic.config({

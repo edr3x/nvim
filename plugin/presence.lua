@@ -20,16 +20,3 @@ require("cord").setup({
         severity = 3,
     },
 })
-
--- for reference later
--- return {
---     "vyfor/cord.nvim",
---     event = "BufReadPre",
---     build = ":Cord update",
---     opts = {
---         lsp = {
---             show_problem_count = true,
---             severity = 3,
---         },
---     },
--- }

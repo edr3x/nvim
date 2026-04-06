@@ -1,6 +1,5 @@
 vim.pack.add({
     "gh:folke/lazydev.nvim",
-    "gh:j-hui/fidget.nvim",
     "gh:mason-org/mason.nvim",
     "gh:neovim/nvim-lspconfig",
     "gh:edr3x/vim-illuminate",
@@ -11,8 +10,6 @@ require("lazydev").setup({
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
     },
 })
-
-require("fidget").setup({})
 
 require("mason").setup()
 
@@ -124,6 +121,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         })
         ---]]
 
+        if client:supports_method("textDocument/codeLens") then
+            vim.lsp.codelens.enable()
+        end
+
         ---[[ Disable default formatting
         if client.name == "tsserver" then
             client.server_capabilities.documentFormattingProvider = false
@@ -150,6 +151,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         nmap("<leader>di", vim.lsp.buf.implementation, "Goto implimentation")
         nmap("<leader>ds", "<cmd>vs | lua vim.lsp.buf.definition()<cr>", "Goto definition (v-split)")
         nmap("<leader>dh", "<cmd>sp | lua vim.lsp.buf.definition()<cr>", "Goto definition (h-split)")
+        nmap("<leader>cl", vim.lsp.codelens.run, "Open Codelens")
 
         -- Diagnostic
         nmap("dn", function()

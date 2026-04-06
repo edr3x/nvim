@@ -1,13 +1,6 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>u", function()
-    vim.cmd.packadd("nvim.undotree")
-    require("undotree").open({
-        command = "topleft 35vnew",
-    })
-end, { desc = "Toggle UndoTree" })
-
 -- center screen
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)

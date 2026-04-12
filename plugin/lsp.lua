@@ -13,6 +13,14 @@ require("lazydev").setup({
 
 require("mason").setup()
 
+require("illuminate").configure({
+    delay = 200,
+    large_file_cutoff = 2000,
+    large_file_overrides = {
+        providers = { "lsp" },
+    },
+})
+
 ---[[ LSP configuration
 local registry = require("mason-registry")
 
@@ -174,14 +182,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.buf.format()
         end, { desc = "Format current buffer with LSP" })
         ---]]
-
-        require("illuminate").configure({
-            delay = 200,
-            large_file_cutoff = 2000,
-            large_file_overrides = {
-                providers = { "lsp" },
-            },
-        })
-        require("illuminate").on_attach(client)
     end,
 })

@@ -134,7 +134,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         ---[[ Disable default formatting
-        if client.name == "tsserver" then
+        if client.name == "ts_ls" then
             client.server_capabilities.documentFormattingProvider = false
         end
 

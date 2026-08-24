@@ -59,6 +59,8 @@ registry.refresh(function()
 end)
 ---]]
 
+local icons = require("utils.icons")
+
 vim.diagnostic.config({
     virtual_text = true,
     update_in_insert = true,
@@ -74,10 +76,10 @@ vim.diagnostic.config({
     },
     signs = {
         text = {
-            [vim.diagnostic.severity.HINT] = " ",
-            [vim.diagnostic.severity.INFO] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+            [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
         },
     },
 })

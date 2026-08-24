@@ -3,6 +3,8 @@ vim.pack.add({
     "gh:nvim-tree/nvim-web-devicons",
 })
 
+local icon = require("utils.icons")
+
 local lspStatus = {
     function()
         local msg = "No LSP detected"
@@ -19,7 +21,7 @@ local lspStatus = {
         end
         return msg
     end,
-    icon = "",
+    icon = icon.ui.Gear,
     color = { fg = "#d3d3d3" },
 }
 
@@ -39,10 +41,10 @@ local buffer = {
 local diagnostic = {
     "diagnostics",
     symbols = {
-        error = " ",
-        warn = " ",
-        info = " ",
-        hint = " ",
+        error = icon.diagnostics.Error,
+        warn = icon.diagnostics.Warning,
+        info = icon.diagnostics.Information,
+        hint = icon.diagnostics.Hint,
     },
     icon = "|",
 }
@@ -50,9 +52,9 @@ local diagnostic = {
 local diff = {
     "diff",
     symbols = {
-        added = " ",
-        modified = " ",
-        removed = " ",
+        added = icon.git.Add,
+        modified = icon.git.Modified,
+        removed = icon.git.Remove,
     },
 }
 

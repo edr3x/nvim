@@ -1,14 +1,16 @@
 vim.pack.add({ "gh:lewis6991/gitsigns.nvim" })
 
+local icon = require("utils.icons").git
+
 require("gitsigns").setup({
     preview_config = { border = "rounded" },
     signs = {
-        add = { text = " +" },
-        change = { text = " " },
-        delete = { text = " " },
-        untracked = { text = "┆" },
-        topdelete = { text = " " },
-        changedelete = { text = " " },
+        add = { text = icon.Add },
+        delete = { text = icon.Remove },
+        change = { text = icon.Modified },
+        untracked = { text = icon.Untrack },
+        topdelete = { text = icon.RemoveAlt },
+        changedelete = { text = icon.RemoveAlt },
     },
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns

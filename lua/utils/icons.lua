@@ -1,7 +1,7 @@
 return {
     diagnostics = {
         Error = " ",
-        Hint = "󰠠 ",
+        Hint = " ",
         Information = " ",
         Question = " ",
         Warning = " ",
@@ -19,20 +19,21 @@ return {
         Import = " ",
     },
     git = {
-        Add = " ",
+        Add = " ",
         AddAlt = " ",
+        Modified = " ",
         Branch = " ",
         Diff = " ",
         DiffAlt = " ",
         Ignore = "◌ ",
         Mod = " ",
         Octoface = " ",
-        Remove = " ",
+        Remove = " ",
         RemoveAlt = " ",
         Rename = " ",
         Repo = " ",
         Tag = " ",
-        Untrack = " ",
+        Untrack = "┆",
         Directory = "",
     },
     kind = {

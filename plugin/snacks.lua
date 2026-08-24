@@ -3,17 +3,24 @@ vim.pack.add({
     "gh:folke/persistence.nvim",
 })
 
+local icons = require("utils.icons").ui
+
 local dashboard = {
     enabled = true,
     width = math.min(math.max(vim.o.columns - 10, 40), 60),
     preset = {
         keys = {
-            { icon = " ", key = "s", desc = "Restore the session", action = ':lua require("persistence").load()' },
-            { icon = " ", key = "t", desc = "File Tree", action = ":Oil" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = " ", key = "f", desc = "Find Files", action = ":lua Snacks.picker.files()" },
-            { icon = " ", key = "g", desc = "Grep Files", action = ":lua Snacks.picker.grep()" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            {
+                icon = icons.Play,
+                key = "s",
+                desc = "Restore the session",
+                action = ':lua require("persistence").load()',
+            },
+            { icon = icons.List, key = "t", desc = "File Tree", action = ":Oil" },
+            { icon = icons.NewFile, key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = icons.Telescope, key = "f", desc = "Find Files", action = ":lua Snacks.picker.files()" },
+            { icon = icons.Search, key = "g", desc = "Grep Files", action = ":lua Snacks.picker.grep()" },
+            { icon = icons.Signout, key = "q", desc = "Quit", action = ":qa" },
         },
         header = [[
                 

@@ -40,6 +40,7 @@ local ensure_installed = {
     "lua",
     "make",
     "markdown",
+    "markdown_inline",
     "prisma",
     "proto",
     "python",

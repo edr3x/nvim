@@ -1,5 +1,5 @@
-local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
 
 -- center screen
 map("n", "<C-d>", "<C-d>zz", opts)
@@ -19,7 +19,8 @@ map({ "n", "x" }, "<Space>", "<nop>")
 -- because im lazy
 map({ "n", "v" }, "<S-h>", "^", opts)
 map({ "n", "v" }, "<S-l>", "$", opts)
-map("n", "<leader><ESC>", "<cmd>qa<CR>", opts)
+map("n", "<leader><ESC>", "<cmd>qa<cr>", opts)
+map("n", "<leader>ss", "<cmd>restart<cr>", opts)
 
 -- move code up and down
 map("n", "<M-j>", ":m+<CR>", opts) -- move line down
